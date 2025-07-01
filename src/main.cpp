@@ -104,22 +104,6 @@ void autonomous() {
 
 }
 
-#define MATH_E  2.718281828459045235360
-#define SCALE   1
-
-int scaler(int input) {
-    if (!input) {
-        return 0;
-    }
-
-    float o_input = input / 127.0;
-
-    if (o_input < 0) {
-        return -127 * (1 - powl(MATH_E, -1 * o_input * SCALE)) / (1 - powl(MATH_E, SCALE));
-    }
-    return 127 * (1 - powl(MATH_E, o_input * SCALE)) / (1 - powl(MATH_E, SCALE));
-}
-
 void opcontrol() {
     while (true) {
         int leftY = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
